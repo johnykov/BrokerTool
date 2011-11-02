@@ -21,10 +21,22 @@ import javax.servlet.RequestDispatcher;
 @WebServlet(name = "PortfolioController", urlPatterns = {"/PortfolioController"})
 public class PortfolioController extends HttpServlet {
 
- 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
+        String customerId = request.getParameter("customerIdentity");
+        BrokerModel model = BrokerModelImpl.getInstance();
+
+        try {
+            CustomerShare[] shares = model.getAllCustomerShares(customerId);
+            Customer customer = model.getCustomer(customerId);
+            request.setAttribute("shares", shares);
+            request.setAttribute("customer", customer);
+        } catch (Exception e) {
+            request.setAttribute("message", e.getMessage());
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Portfolio.jsp");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
