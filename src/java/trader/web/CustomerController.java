@@ -13,7 +13,7 @@ import javax.servlet.RequestDispatcher;
  *
  * @author jan
  */
-@WebServlet(name = "CustomerController", urlPatterns = {"/AllCustomers"})
+@WebServlet(name = "CustomerController", urlPatterns = {"/CustomerController","/AllCustomers"})
 public class CustomerController extends HttpServlet {
 
     /** 
