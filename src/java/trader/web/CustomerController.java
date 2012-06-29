@@ -32,7 +32,7 @@ public class CustomerController extends HttpServlet {
 
             String id = request.getParameter("customerIdentity");
             String name = request.getParameter("customerName");
-            String adress = request.getParameter("customerAdress");
+            String adress = request.getParameter("customerAddress"); // nie dziala update poniewaz byla literowka "customerAdress" zamiast "Address"
             String submit = request.getParameter("submit");
 
             try {
@@ -53,7 +53,7 @@ public class CustomerController extends HttpServlet {
             } catch (BrokerException be) {
                 request.setAttribute("message", be.getMessage());
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerDetails");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerDetails.jsp");
             dispatcher.forward(request, response);
         } else if (path.equals("/AllCustomers")) {
             try {
