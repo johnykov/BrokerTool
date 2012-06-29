@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Portfolio</title>
+    </h:head>
+    <h:body>
+        <table border='1' cellpadding='4'>
+            <tbody>
+                <tr><td><h:link outcome='CustomerDetails.xhtml'>Customer Details</h:link></td><td><h:link outcome='AllCustomers.xhtml'>All Customers</h:link></td><td><h:link outcome='Stocks.xhtml'>Stocks</h:link></td></tr>
+            </tbody>
+        </table>
+        <br/>#{portfolio.message}
+        <h:panelGroup rendered="#{not empty portfolio.shares}">
+            #{portfolio.customerName}'s Stocks
+            <br/>
+            <h:dataTable border="1" value="#{portfolio.shares}" var="share">
+                <h:column>
+                    <f:facet name="header">Symbol</f:facet>
+                    #{share.stockSymbol}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Quantity</f:facet>
+                    #{share.quantity}
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{not empty portfolio.message}">
+            <font color='red'>#{portfolio.message}</font>
+        </h:panelGroup>
+    </h:body>
+</html>
+

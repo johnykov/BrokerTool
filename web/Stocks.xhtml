@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" >
+    <h:head>
+        <title>Stocks</title>
+    </h:head>
+    <h:body>
+        <table border='1' cellpadding='4'>
+            <tbody>
+                <tr><td><a href='CustomerDetails.xhtml'>Customer Details</a></td><td><a href='AllCustomers.xhtml'>All Customers</a></td><td><a href='Stocks.xhtml'>Stocks</a></td></tr>
+            </tbody>
+        </table>
+        <br/>
+        <h:dataTable value="#{stocks.allStocks}" var="stock">
+            <h:column>
+                <f:facet name="header">Symbol</f:facet>
+                #{stock.symbol}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Price</f:facet>
+                #{stock.price}
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</html>
+

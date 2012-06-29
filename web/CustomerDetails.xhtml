@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Customer Details</title>
+    </h:head>
+    <h:body>
+        <table border='1' cellpadding='4'>
+            <tbody>
+                <tr><td><h:link outcome='CustomerDetails.xhtml'>Customer Details</h:link></td><td><h:link outcome='AllCustomers.xhtml'>All Customers</h:link></td><td><h:link outcome='Stocks.xhtml'>Stocks</h:link></td></tr>
+            </tbody>
+        </table>
+        <br/>
+        <h:form>
+            <table border='1' cellpadding='4'>
+                <tbody>
+                    <tr><td>Customer Name</td><td><h:inputText id='customerName' value='#{customerDetails.customerName}'/></td></tr>
+                    <tr><td>Customer Identity</td><td><h:inputText id='customerIdentity' value='#{customerDetails.customerId}'/></td></tr>
+                    <tr><td>Customer Address</td><td><h:inputText id='customerAddress' value='#{customerDetails.customerAddress}'/></td></tr>
+                    <tr><td colspan='2' align='center'><h:commandButton action='#{customerDetails.retrieveCustomer}' value='Get Customer'/><h:commandButton action='#{customerDetails.updateCustomer}' value='Update Customer'/></td></tr>
+                    <tr><td colspan='2' align='center'><h:commandButton action='#{customerDetails.addCustomer}' value='Add Customer'/><h:commandButton action='#{customerDetails.deleteCustomer}' value='Delete Customer'/></td></tr>
+                </tbody>
+            </table>
+        </h:form>
+        <h:panelGroup rendered="#{not empty customerDetails.message}">
+            <br/>
+            <font color='red'>#{customerDetails.message}</font>
+        </h:panelGroup>
+    </h:body>
+</html>
+

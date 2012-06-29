@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>All Customers</title>
+    </h:head>
+    <h:body>
+        <table border='1' cellpadding='4'>
+            <tbody>
+                <tr><td><h:link outcome='CustomerDetails.xhtml'>Customer Details</h:link></td><td><h:link outcome='AllCustomers.xhtml'>All Customers</h:link></td><td><h:link outcome='Stocks.xhtml'>Stocks</h:link></td></tr>
+            </tbody>
+        </table>
+        <br/>
+        <h:dataTable border="1" value="#{customerDetails.allCustomers}" var="customer">
+            <h:column>
+                <f:facet name="header">Customer Id</f:facet>
+                <h:form>
+                    <h:commandLink action="#{customerDetails.retrieveCustomer}">
+                    #{customer.id}
+                    <f:setPropertyActionListener target="#{customerDetails.customerId}" value="#{customer.id}"/>
+                </h:commandLink>
+                </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                #{customer.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Address</f:facet>
+                #{customer.addr}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Portfolio</f:facet>
+                <center>
+                <h:form>
+                    <h:commandLink action="Portfolio">
+                    View
+                    <f:setPropertyActionListener target="#{portfolio.customerId}" value="#{customer.id}"/>
+                </h:commandLink>
+                </h:form>
+                </center>
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</html>
+
