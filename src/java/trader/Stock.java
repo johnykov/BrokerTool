@@ -1,11 +1,20 @@
 package trader;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "STOCK")
 public class Stock implements Serializable {
 
+    @Id
+    @Column(name = "SYMBOL")
     private String symbol;
+    @Column(name = "PRICE")
     private double price;
+
+    public Stock() {
+    }
 
     public Stock(String symbol, double price) {
         this.symbol = symbol;
